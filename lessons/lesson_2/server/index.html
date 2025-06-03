@@ -11,36 +11,41 @@
     <h1>Привет, мир!</h1>
     <p>Это простая HTML-страница.</p>
 
-    <!-- <script type="systemjs-importmap">
-        {
-            "imports": {
-                "esm-module": "/public/modules/esm-module.mjs"
-            }
-        }
-    </script> -->
     <script type="systemjs-importmap">
         {
             "imports": {
-                "esm-module": "/public/modules/esm-module.mjs"
-            },
-            "scopes": {
-                "/public/modules/": {
-                    "esm-module": "/public/modules/esm-module.mjs"
-                }
-            },
-            "meta": {
-                "/public/modules/esm-module.mjs": {
-                    "format": "esm"
-                }
+                "js-module": "/public/modules/js-module.js",
+                "system-module": "/public/modules/system-module.js",
+                "amd-module": "/public/modules/amd-module.js"
             }
         }
     </script>
-    <!-- <script src="public/system.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/systemjs@6/dist/system.min.js"></script>
+
+    <script src="public/system.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/systemjs-plugin-amd@0.3.0/amd.js"></script>
 
     <script type="module">
-        System.import('esm-module').then(module => {
-            module.es6Module.hello();
+        System.config({
+            map: {
+                'amd': 'https://cdn.jsdelivr.net/npm/systemjs-plugin-amd@0.3.0/amd.js'
+            },
+            meta: {
+                '*.js': {
+                    loader: 'amd'
+                }
+            }
+        });
+
+        // System.import('js-module').then(module => {
+        //     console.log('module:', module);
+        // });
+
+        // System.import('system-module').then(module => {
+        //     console.log('module:', module);
+        // });
+
+        System.import('amd-module').then(module => {
+            console.log('module:', module);
         });
     </script>
 </body>
