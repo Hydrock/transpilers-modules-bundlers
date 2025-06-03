@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Простая страница</title>
+    <!-- <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script> -->
+</head>
+
+<body>
+    <h1>Привет, мир!</h1>
+    <p>Это простая HTML-страница.</p>
+    <dev id="root"></dev>
+
+    <!-- <script type="systemjs-importmap">
+        {
+            "imports": {
+                "js-module": "/public/modules/js-module.js",
+                "system-module": "/public/modules/system-module.js",
+                "amd-module": "/public/modules/amd-module.js"
+            }
+        }
+    </script> -->
+
+    <!-- <script src="public/index.js" type="module">
+
+    </script> -->
+
+    <script type="module">
+        import('/public/index.js').then((module) => {
+            console.log('module:', module);
+        })
+    </script>
+</body>
+
+</html>
