@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Простая страница</title>
+</head>
+
+<body>
+    <h1>Привет, мир!</h1>
+    <p>Это простая HTML-страница.</p>
+
+    <!-- <script type="systemjs-importmap">
+        {
+            "imports": {
+                "esm-module": "/public/modules/esm-module.mjs"
+            }
+        }
+    </script> -->
+    <script type="systemjs-importmap">
+        {
+            "imports": {
+                "esm-module": "/public/modules/esm-module.mjs"
+            },
+            "scopes": {
+                "/public/modules/": {
+                    "esm-module": "/public/modules/esm-module.mjs"
+                }
+            },
+            "meta": {
+                "/public/modules/esm-module.mjs": {
+                    "format": "esm"
+                }
+            }
+        }
+    </script>
+    <!-- <script src="public/system.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/systemjs@6/dist/system.min.js"></script>
+
+    <script type="module">
+        System.import('esm-module').then(module => {
+            module.es6Module.hello();
+        });
+    </script>
+</body>
+
+</html>
