@@ -1,3 +1,4 @@
+console.log('module:', module);
 const module_1 = require.resolve('./module_1.js');
 const lodash = require.resolve('lodash');
 
