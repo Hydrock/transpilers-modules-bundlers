@@ -1,3 +1,3 @@
-export const phrase = 'Начальный текст';
+export const phrase = 'Начальный текст11122221';
 
-console.log('log from phrase module')
+console.error('log from phrase module')

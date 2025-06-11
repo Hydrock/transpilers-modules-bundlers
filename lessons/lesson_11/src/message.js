@@ -4,4 +4,4 @@ export function getMessage() {
     return `Сообщение: ${phrase}`;
 }
 
-console.log('log from message module')
+console.error('log from message module')
