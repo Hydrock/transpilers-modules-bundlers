@@ -1,10 +1,12 @@
 import './App.css';
-import Provider from 'provider';
+// import Provider from 'provider';
+import HelloWorld from 'provider/HelloWorld';
 
 const App = () => {
   return (
     <div className="content">
-      <Provider />
+      {/* <Provider /> */}
+      <HelloWorld x={ 10 }/>
     </div>
   );
 };
