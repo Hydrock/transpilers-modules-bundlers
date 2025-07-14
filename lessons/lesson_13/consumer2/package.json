@@ -1,0 +1,22 @@
+{
+  "name": "consumer2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "arui-scripts start"
+  },
+  "devDependencies": {
+    "arui-scripts": "^19.0.7"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^21.4.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "typescript": "^5.8.3"
+  },
+  "aruiScripts": {
+    "clientServerPort": "8082",
+    "serverPort": "3002"
+  }
+}
