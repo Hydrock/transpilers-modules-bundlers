@@ -1,6 +1,18 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
+// import { init, loadRemote } from '@module-federation/enhanced/runtime';
+
+// init({
+//     name: 'consumer',
+//     remotes: [
+//         {
+//             name: "provider",
+//             entry: "http://localhost:3001/mf-manifest.json"
+//         }
+//     ],
+// });
+
 const App = () => {
   return (
     <div>
