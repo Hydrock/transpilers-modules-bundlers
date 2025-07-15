@@ -1,0 +1,37 @@
+{
+  "id": "host",
+  "name": "host",
+  "metaData": {
+    "name": "host",
+    "type": "app",
+    "buildInfo": {
+      "buildVersion": "1.0.0",
+      "buildName": "consumer2"
+    },
+    "remoteEntry": {
+      "name": "",
+      "path": "",
+      "type": "global"
+    },
+    "types": {
+      "path": "",
+      "name": "",
+      "zip": "",
+      "api": ""
+    },
+    "globalName": "host",
+    "pluginVersion": "0.16.0",
+    "prefetchInterface": false,
+    "publicPath": "assets/"
+  },
+  "shared": [],
+  "remotes": [
+    {
+      "federationContainerName": "provider",
+      "moduleName": "UNKNOWN",
+      "alias": "provider",
+      "entry": "http://localhost:3001/mf-manifest.json"
+    }
+  ],
+  "exposes": []
+}
