@@ -1,0 +1,33 @@
+{
+  "name": "consumer2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack serve --config webpack.config.js"
+  },
+  "dependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/preset-env": "^7.28.0",
+    "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
+    "@hapi/hapi": "^21.4.0",
+    "@module-federation/enhanced": "^0.16.0",
+    "babel-loader": "^10.0.0",
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "style-loader": "^4.0.0",
+    "typescript": "^5.8.3",
+    "webpack": "^5.100.2",
+    "webpack-dev-server": "^5.2.2"
+  },
+  "aruiScripts": {
+    "clientServerPort": "8082",
+    "serverPort": "3002"
+  },
+  "devDependencies": {
+    "webpack-cli": "^6.0.1"
+  }
+}
