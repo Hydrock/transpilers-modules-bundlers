@@ -9,7 +9,7 @@ const mfConfig = require('./module-federation.config');
 module.exports = {
     entry: './src/index.ts', // точка входа
     output: {
-        filename: 'bundle.js',
+        filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist'),
         publicPath: 'auto',
         clean: true, // очищать dist перед каждой сборкой
@@ -42,19 +42,16 @@ module.exports = {
     ],
     devServer: {
         static: path.resolve(__dirname, 'dist'),
-        port: 3000,
+        port: 3001,
         hot: true, // поддержка hot reload
         open: true, // автоматически открывать браузер
-        historyApiFallback: true, // для SPA с React Router
-        // proxy: {
-        //     '/mf-manifest.json': {
-        //         target: 'http://localhost:3001',
-        //         pathRewrite: { '^/mf-manifest.json': '/mf-manifest.json' },
-        //         changeOrigin: true,
-        //     },
-        // },
+        historyApiFallback: true, // для SPA с React Router,
+        headers: {
+            'Access-Control-Allow-Origin': '*', // Разрешить все источники
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+            'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+        },
     },
     mode: 'development', // режим разработки
     devtool: 'eval-source-map', // удобная отладка
-
 };

@@ -3,6 +3,11 @@ import { createRoot } from 'react-dom/client';
 
 // eslint-disable-next-line
 // @ts-ignore
+import Button from 'provider/Button';
+console.log('Button:', Button);
+
+// eslint-disable-next-line
+// @ts-ignore
 // import DefaultComponent from 'provider'
 // console.log('DefaultComponent:', DefaultComponent);
 
@@ -19,16 +24,17 @@ import { createRoot } from 'react-dom/client';
 // });
 
 const App = () => {
-  return (
-    <div>
-      <h1>Привет, React!!!!!</h1>
-      {/* <DefaultComponent /> */}
-    </div>
+    return (
+        <div>
+        <h1>Привет, React!!!!! </h1>
+      {/* <DefaultComponent /> */ }
+    <Button />
+        </div>
   );
 };
 
 const container = document.getElementById('root');
 if (container) {
-  const root = createRoot(container);
-  root.render(<App />);
+    const root = createRoot(container);
+    root.render(<App />);
 }
