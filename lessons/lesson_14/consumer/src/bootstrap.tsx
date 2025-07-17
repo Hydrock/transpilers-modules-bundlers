@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 
 // eslint-disable-next-line
 // @ts-ignore
-import Button from 'provider/Button';
-console.log('Button:', Button);
+// import Button from 'provider/Button';
+// console.log('Button:', Button);
 
 // eslint-disable-next-line
 // @ts-ignore
@@ -23,12 +23,30 @@ console.log('Button:', Button);
 //     ],
 // });
 
+
+// const RemoteApplication = lazy(() => import(`${path}`));
+
+//   return (
+    // <Suspense fallback={<CircularProgress />}>
+    //   <RemoteApplication basename={name} />
+    // </Suspense>
+//   );
+
+const RemoteApplication = lazy(() => import('remote/Button'));
+
 const App = () => {
+  // eslint-disable-next-line
+  // @ts-ignore
+    console.log('RemoteApplication:', RemoteApplication);
     return (
         <div>
         <h1>Привет, React!!!!! </h1>
       {/* <DefaultComponent /> */ }
-    <Button />
+        {/* <Button /> */}
+        {/* @ts-ignore */}
+        <Suspense fallback="loading">
+          <RemoteApplication />
+        </Suspense>
         </div>
   );
 };

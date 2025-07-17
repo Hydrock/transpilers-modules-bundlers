@@ -14,4 +14,9 @@ module.exports = {
             singleton: true,
         },
     },
+    dev: {
+        disableLiveReload: true,
+        disableHotTypesReload: true,
+        disableDynamicRemoteTypeHints: true,
+    }
 };

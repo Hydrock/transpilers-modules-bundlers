@@ -1,10 +1,12 @@
 // webpack.config.js
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {
-    ModuleFederationPlugin,
-} = require('@module-federation/enhanced/webpack');
-const mfConfig = require('./module-federation.config');
+// const {
+//     ModuleFederationPlugin,
+// } = require('@module-federation/enhanced/webpack');
+// const mfConfig = require('./module-federation.config');
+
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
 module.exports = {
     entry: './src/index.ts', // точка входа
@@ -38,7 +40,22 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './public/index.html', // ваш шаблон HTML
         }),
-        new ModuleFederationPlugin(mfConfig),
+        new ModuleFederationPlugin({
+            name: 'remote', // this name needs to match with the entry name
+            filename: "remoteEntry.js",
+            exposes: {
+                './Button': './src/components/Button.tsx',
+            },
+            shared: {
+                react: {
+                    singleton: true,
+                },
+                'react-dom': {
+                    singleton: true,
+                },
+            },
+        }),
+        // new ModuleFederationPlugin(mfConfig),
     ],
     devServer: {
         static: path.resolve(__dirname, 'dist'),

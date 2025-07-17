@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Button = ({ label, onClick }) => {
+const Button = () => {
   return (
-    <button onClick={onClick} style={{ padding: '8px 16px', fontSize: '16px' }}>
-      {label} sdflksjdflkjsdlkf 333
+    <button style={{ padding: '8px 16px', fontSize: '16px' }}>
+      111
     </button>
   );
 };

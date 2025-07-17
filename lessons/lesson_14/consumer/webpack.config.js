@@ -1,10 +1,12 @@
 // webpack.config.js
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {
-    ModuleFederationPlugin,
-} = require('@module-federation/enhanced/webpack');
-const mfConfig = require('./module-federation.config');
+// const {
+//     ModuleFederationPlugin,
+// } = require('@module-federation/enhanced/webpack');
+// const mfConfig = require('./module-federation.config');
+
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
 module.exports = {
     entry: './src/index.ts', // точка входа
@@ -38,7 +40,23 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './public/index.html', // ваш шаблон HTML
         }),
-        new ModuleFederationPlugin(mfConfig),
+        // new ModuleFederationPlugin({
+        //     name: 'ONA_WIDGETS',
+        //     filename: 'remoteEntry.js',
+        //     // exposes: {
+        //     //     ...Widgets,
+        //     // },
+        //     shared: {
+
+        //     },
+        // }),
+        new ModuleFederationPlugin({
+            name: 'host',
+            remotes: {
+                remote: 'remote@http://localhost:3001/remoteEntry.js',
+            },
+        }),
+        // new ModuleFederationPlugin(mfConfig),
     ],
     devServer: {
         static: path.resolve(__dirname, 'dist'),
