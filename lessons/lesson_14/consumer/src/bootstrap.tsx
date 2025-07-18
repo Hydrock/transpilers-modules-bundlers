@@ -1,5 +1,14 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
+console.log('React:', React);
 import { createRoot } from 'react-dom/client';
+
+import { initContainer, loadScript } from '../utils/container';
+
+async function init() {
+  await loadScript('http://localhost:3001/remoteEntry.js', 'id');
+
+  return initContainer();
+}
 
 // eslint-disable-next-line
 // @ts-ignore
@@ -32,21 +41,56 @@ import { createRoot } from 'react-dom/client';
     // </Suspense>
 //   );
 
-const RemoteApplication = lazy(() => import('remote/Button'));
+// const RemoteApplication = lazy(() => import('remote/Button'));
 
 const App = () => {
+  const [Component, setComponent] = useState(undefined);
+
+  console.log('Button render:', typeof useState); // из remote-компонента
+
+  useEffect(() => {
+
+    (async function() {
+      const Module = await init();
+      if (Module) {
+        console.log('Module111:', Module);
+        setComponent(() => Module.default || Module);
+      }
+    })()
+    
+  }, []);
+
   // eslint-disable-next-line
   // @ts-ignore
-    console.log('RemoteApplication:', RemoteApplication);
     return (
         <div>
         <h1>Привет, React!!!!! </h1>
       {/* <DefaultComponent /> */ }
         {/* <Button /> */}
         {/* @ts-ignore */}
-        <Suspense fallback="loading">
+        {/* <Suspense fallback="loading">
           <RemoteApplication />
-        </Suspense>
+        </Suspense> */}
+        {/* @ts-ignore */}
+        {/* <Suspense fallback="loading">
+          {
+            Component && (
+              // eslint-disable-next-line
+              // @ts-ignore
+              <Component />
+            )
+          }
+        </Suspense> */}
+        { console.log('Component11', Component) }
+        11111
+        {
+            Component && (
+              // eslint-disable-next-line
+              // @ts-ignore
+              <Component React2={ React } />
+            )
+          }
+          222222
         </div>
   );
 };

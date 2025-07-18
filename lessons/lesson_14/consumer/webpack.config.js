@@ -55,6 +55,14 @@ module.exports = {
             remotes: {
                 remote: 'remote@http://localhost:3001/remoteEntry.js',
             },
+            shared: {
+                react: {
+                    singleton: true,
+                },
+                'react-dom': {
+                    singleton: true,
+                },
+            },
         }),
         // new ModuleFederationPlugin(mfConfig),
     ],
